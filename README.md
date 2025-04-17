@@ -1,34 +1,24 @@
-# frontend
+# Order Management System(OMS)
 
-An Electron application with Vue
+This is a system for managing customer orders, suitable for small business or personal projects
 
-## Recommended IDE Setup
+## Function
 
-- [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+## Install
 
-## Project Setup
+### Install Package
 
-### Install
+-[Installation Package Hyperlink]()
 
-```bash
-$ npm install
-```
+## Folder Description
 
-### Development
+## Project Technology
 
-```bash
-$ npm run dev
-```
+- Node.js
+- Vue v3
+- Vite v4
+- Vue Router v4
+- Axios
+- Bootstrap
 
-### Build
-
-```bash
-# For windows
-$ npm run build:win
-
-# For macOS
-$ npm run build:mac
-
-# For Linux
-$ npm run build:linux
-```
+## Contact The Author
