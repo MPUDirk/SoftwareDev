@@ -9,7 +9,7 @@ import router from './router'
 
 const app = createApp(App)
 
-axios.defaults.baseURL = 'https://p2304362.dc-yan.top/oms//';
+axios.defaults.baseURL = 'https://p2304362.dc-yan.top/oms/';
 axios.defaults.timeout = 60000;
 axios.defaults.withCredentials = true;
 

@@ -19,7 +19,8 @@ const clickSignup = () => {
   instance.proxy.$axios.get(url).then(response => {
     form_data.set('csrfmiddlewaretoken', response.data)
     instance.proxy.$axios.post(url, form_data).then(() => {
-      $('#tipModal').show()
+      const modalInstance = new bootstrap.Modal(document.getElementById('tipModal'))
+      modalInstance.show(modalInstance)
     }).catch(e => {
       try {
         const errors = e.response.data.errors
