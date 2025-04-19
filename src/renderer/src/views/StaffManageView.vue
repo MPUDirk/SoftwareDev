@@ -1,70 +1,106 @@
 <script setup>
 import {getCurrentInstance, onMounted, ref} from "vue";
+import ErrsMsg from "../components/ErrsMsg.vue";
 
 
 defineEmits(['set-user', 'set-perms'])
-const props = defineProps(['csrfmiddlewaretoken', 'user'])
+const props = defineProps(['user'])
 const instance = getCurrentInstance()
-const staffs = ref({
-  application: [],
-  active: []
-})
+const errs = ref({})
+const staffs = ref([])
 
 onMounted(() => {
   instance.proxy.$axios.get("user/").then(response => {
-    staffs.value = response.data;
+    staffs.value = response.data.staffs;
     console.log(staffs.value);
   })
 })
 
-function clickDel(t, staff) {
+function clickDel(staff) {
   instance.proxy.$axios.get("user/" + staff['username'] + "/del/").then(() => {
-    staffs.value[t] = staffs.value[t].filter(s => s['username'] !== staff['username'])
+    staffs.value = staffs.value.filter(s => s['username'] !== staff['username'])
   })
 }
 
-function clickAccept(staff) {
-  instance.proxy.$axios.get("user/" + staff['username'] + "/accept").then(() => {
-    staffs.value['application'] = staffs.value['application'].filter(s => s['username'] !== staff['username'])
-    staffs.value['active'].push(staff)
+function clickAdd() {
+  const form = document.getElementById("newStaffForm")
+  const form_data = new FormData(form)
+  const url = form.getAttribute('action');
+
+  instance.proxy.$axios.get(url).then(response => {
+    form_data.set('csrfmiddlewaretoken', response.data)
+
+    instance.proxy.$axios.post(url, form_data).then(respond => {
+      const staff = {
+        "first_name": form_data.get("first_name"),
+        "last_name": form_data.get("last_name"),
+        "username": respond.data['username'],
+      }
+      staffs.value.push(staff);
+    }).catch(e => {
+      errs.value = {}
+      try {
+        const errors = e.response.data.errors
+        for (let key in errors) {
+          errs.value[key] = errors[key][0]
+        }
+      } catch (e) {
+        console.error(e)
+      }
+    })
   })
 }
 </script>
 
 <template>
-  <h1 class="border-bottom">Staff Management</h1>
+  <div class="modal fade" id="newStaffModal" tabindex="-1" aria-labelledby="newStaffModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="newStaffModalLabel">Modal title</h1>
+        </div>
 
-  <div class="my-3">
-    <h4>registration Application</h4>
-    <ul class="list-group">
-      <li v-for="staff in staffs['application']" class="list-group-item">
-        <form method="POST" class="d-flex justify-content-between align-items-center">
-          <input type="hidden" name="csrfmiddlewaretoken" :value="props.csrfmiddlewaretoken">
-          {{ staff['first_name'] }} {{ staffs['last_name'] }}
-          <div>
-            <input @click="clickAccept(staff)" type="button" class="me-2 btn btn-sm btn-success" value="Accept">
-            <input @click="clickDel('application', staff)" type="button" class="btn btn-sm btn-warning" value="Reject">
+        <form id="newStaffForm" action="/user/staff/new/" method="POST">
+          <div class="modal-body">
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name" class="form-control">
+
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name" class="form-control">
+
+            <label for="password">Password:</label>
+            <input type="password" name="password1" class="form-control">
+
+            <label for="password">Confirm Password:</label>
+            <input type="password" name="password2" class="form-control">
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" @click="clickAdd" class="btn btn-primary">Add</button>
           </div>
         </form>
-      </li>
-      <li v-if="staffs['application'].length === 0" class="list-group-item">
-        No Staff Application
-      </li>
-    </ul>
-
+      </div>
+    </div>
   </div>
 
+  <ErrsMsg v-for="(err, index) in errs">{{index}}: {{err}}</ErrsMsg>
+
   <div>
-    <h4>Staff Mange</h4>
+    <div class="my-3 border-bottom d-flex align-items-center justify-content-between">
+      <h1>Staff Management</h1>
+      <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#newStaffModal">
+        + Staff
+      </button>
+    </div>
+
     <ul class="list-group">
-      <li v-for="staff in staffs['active']" class="list-group-item">
-        <form method="POST" class="d-flex justify-content-between align-items-center">
-          <input type="hidden" name="csrfmiddlewaretoken" :value="props.csrfmiddlewaretoken">
-          {{ staff['first_name'] }} {{ staff['last_name'] }}
-          <input @click="clickDel('active', staff)" type="button" class="btn btn-sm btn-danger" value="Delete">
-        </form>
+      <li v-for="staff in staffs" class="list-group-item d-flex align-items-center justify-content-between">
+        <input type="hidden" name="csrfmiddlewaretoken" :value="props.csrfmiddlewaretoken">
+        {{ staff['first_name'] }} {{ staff['last_name'] }}({{ staff['username'] }})
+        <input @click="clickDel('active', staff)" type="button" class="btn btn-sm btn-danger" value="Delete">
       </li>
-      <li v-if="staffs['active'].length === 0" class="list-group-item">
+      <li v-if="staffs.length === 0" class="list-group-item">
         No Staff
       </li>
     </ul>

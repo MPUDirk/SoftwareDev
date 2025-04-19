@@ -5,8 +5,8 @@ import Home from "@/components/home/Home.vue";
 import Login from "@/components/home/Login.vue";
 
 
-const emits = defineEmits(['set-csrfmiddlewaretoken', 'set-user', 'set-perms'])
-const {user, csrfmiddlewaretoken} = defineProps(['user', 'csrfmiddlewaretoken'])
+const emits = defineEmits(['set-user', 'set-perms'])
+const {user} = defineProps(['user'])
 const currentComponent = shallowRef(user.isAuthenticated ? Home : Login)
 
 watch(() => user, (newUser) => {
@@ -23,9 +23,7 @@ function handleSwitchComponent(component) {
 
   <component
       :is="currentComponent"
-      :csrfmiddlewaretoken="csrfmiddlewaretoken"
       :user="user"
-      @set-csrfmiddlewaretoken="emits('set-csrfmiddlewaretoken', $event)"
       @set-user="emits('set-user', $event)"
       @set-perms = "emits('set-perms', $event)"
       @switch-component="handleSwitchComponent"
