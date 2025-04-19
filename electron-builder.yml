@@ -1,5 +1,5 @@
-appId: com.electron.app
-productName: frontend
+appId: com.mpu.oms
+productName: OMS
 directories:
   buildResources: build
 files:
@@ -11,7 +11,7 @@ files:
 asarUnpack:
   - resources/**
 win:
-  executableName: frontend
+  executableName: Order Management System
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}

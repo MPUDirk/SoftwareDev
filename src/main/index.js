@@ -19,6 +19,14 @@ function createWindow() {
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
+    if (is.dev) {
+      mainWindow.webContents.openDevTools()
+    } else {
+      mainWindow.webContents.session.webRequest.onBeforeSendHeaders((details, callback) => {
+        details.requestHeaders['Referer'] = 'https://localhost:5173/'
+        callback({requestHeaders: details.requestHeaders})
+      })
+    }
   })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {

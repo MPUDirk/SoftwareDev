@@ -1,9 +1,9 @@
 {
   "name": "frontend",
   "version": "1.0.0",
-  "description": "An Electron application with Vue",
+  "description": "A software hw",
   "main": "./out/main/index.js",
-  "author": "example.com",
+  "author": "Dirk Chan",
   "homepage": "https://electron-vite.org",
   "scripts": {
     "format": "prettier --write .",
