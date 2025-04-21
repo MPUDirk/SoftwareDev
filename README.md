@@ -4,13 +4,27 @@ This is a system for managing customer orders, suitable for small business or pe
 
 ## Function
 
+- [x] LogIn
+- [x] LogOut
+- [x] Registration
+
 ## Install
 
 ### Install Package
 
--[Installation Package Hyperlink]()
+**-[Installation Package Hyperlink](https://github.com/MPUDirk/SoftwareDev/releases/download/Pre-release/frontend-1.0.0-setup.exe)**
 
 ## Folder Description
+
+```
+src
+├─main
+├─preload
+└─renderer
+    └─src
+        ├─assets
+        └─components
+```
 
 ## Project Technology
 
@@ -20,5 +34,17 @@ This is a system for managing customer orders, suitable for small business or pe
 - Vue Router v4
 - Axios
 - Bootstrap
+- Electron
+- JS-Cookie
+
+## Gantt Chart
+
+![image](Gantt Chart.jpg)
 
 ## Contact The Author
+
+p2304362@mpu.edu.mo
+
+p2304321@mpu.edu.mo
+
+p2304381@mpu.edu.mo
