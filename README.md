@@ -39,7 +39,7 @@ src
 
 ## Gantt Chart
 
-![image](Gantt Chart.jpg)
+![image](https://github.com/MPUDirk/SoftwareDev/blob/master/Gantt%20Chart.jpg)
 
 ## Contact The Author
 
