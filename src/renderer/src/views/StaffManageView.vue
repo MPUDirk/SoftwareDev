@@ -12,11 +12,11 @@ const staffs = ref([])
 onMounted(() => {
   instance.proxy.$axios.get("user/").then(response => {
     staffs.value = response.data.staffs;
-    console.log(staffs.value);
   })
 })
 
 function clickDel(staff) {
+  console.log(staff);
   instance.proxy.$axios.get("user/" + staff['username'] + "/del/").then(() => {
     staffs.value = staffs.value.filter(s => s['username'] !== staff['username'])
   })
@@ -98,7 +98,7 @@ function clickAdd() {
       <li v-for="staff in staffs" class="list-group-item d-flex align-items-center justify-content-between">
         <input type="hidden" name="csrfmiddlewaretoken" :value="props.csrfmiddlewaretoken">
         {{ staff['first_name'] }} {{ staff['last_name'] }}({{ staff['username'] }})
-        <input @click="clickDel('active', staff)" type="button" class="btn btn-sm btn-danger" value="Delete">
+        <input @click="clickDel(staff)" type="button" class="btn btn-sm btn-danger" value="Delete">
       </li>
       <li v-if="staffs.length === 0" class="list-group-item">
         No Staff

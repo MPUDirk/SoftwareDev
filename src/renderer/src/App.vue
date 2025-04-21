@@ -52,11 +52,11 @@ function setPerms(p) {
 <!--        class="list-group-item list-group-item-action list-group-item-dark"-->
 <!--      >Order</RouterLink>-->
 
-<!--      <RouterLink-->
-<!--        to="/goods"-->
-<!--        v-if="perms === '__staff__' || perms === '__super__'"-->
-<!--        class="list-group-item list-group-item-action list-group-item-dark"-->
-<!--      >Goods Manage</RouterLink>-->
+      <RouterLink
+        to="/goods"
+        v-if="perms === '__staff__' || perms === '__super__'"
+        class="list-group-item list-group-item-action list-group-item-dark"
+      >Goods Manage</RouterLink>
 
       <RouterLink
         to="/staff"
