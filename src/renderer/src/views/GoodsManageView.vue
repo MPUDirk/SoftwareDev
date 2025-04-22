@@ -42,7 +42,7 @@ function clickAdd() {
             <label for="name">Name:</label>
             <input id="name" type="text" name="name" class="form-control">
 
-            <label for="quality">Quality:</label>
+            <label for="quality">Quantity:</label>
             <input id="quality" type="text" name="quality" class="form-control">
           </div>
 

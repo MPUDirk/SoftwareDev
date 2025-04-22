@@ -1,6 +1,7 @@
 <script setup>
-import Login from "@/components/home/Login.vue";
 import {getCurrentInstance, ref} from "vue";
+import {Modal} from "bootstrap";
+import Login from "@/components/home/Login.vue";
 import ErrsMsg from "../ErrsMsg.vue";
 
 
@@ -19,7 +20,7 @@ const clickSignup = () => {
   instance.proxy.$axios.get(url).then(response => {
     form_data.set('csrfmiddlewaretoken', response.data)
     instance.proxy.$axios.post(url, form_data).then(() => {
-      const modalInstance = new bootstrap.Modal(document.getElementById('tipModal'))
+      const modalInstance = new Modal(document.getElementById('tipModal'))
       modalInstance.show(modalInstance)
     }).catch(e => {
       try {

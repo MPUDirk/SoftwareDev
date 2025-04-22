@@ -1,13 +1,14 @@
 <script setup>
-import {shallowRef, watch} from "vue";
+import {getCurrentInstance, onMounted, shallowRef, watch} from "vue";
 
 import Home from "@/components/home/Home.vue";
 import Login from "@/components/home/Login.vue";
 
 
 const emits = defineEmits(['set-user', 'set-perms'])
-const {user} = defineProps(['user'])
+const {user} = defineProps(['user', 'perms'])
 const currentComponent = shallowRef(user.isAuthenticated ? Home : Login)
+
 
 watch(() => user, (newUser) => {
   currentComponent.value = newUser.isAuthenticated ? Home : Login
@@ -24,6 +25,7 @@ function handleSwitchComponent(component) {
   <component
       :is="currentComponent"
       :user="user"
+      :perms="perms"
       @set-user="emits('set-user', $event)"
       @set-perms = "emits('set-perms', $event)"
       @switch-component="handleSwitchComponent"

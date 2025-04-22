@@ -46,11 +46,11 @@ function setPerms(p) {
         class="list-group-item list-group-item-action list-group-item-dark"
       >Home</RouterLink>
 
-<!--      <RouterLink-->
-<!--        to="/orders"-->
-<!--        v-if="perms === '__customer__'"-->
-<!--        class="list-group-item list-group-item-action list-group-item-dark"-->
-<!--      >Order</RouterLink>-->
+      <RouterLink
+        to="/order"
+        v-if="perms === '__customer__'"
+        class="list-group-item list-group-item-action list-group-item-dark"
+      >Order</RouterLink>
 
       <RouterLink
         to="/goods"
@@ -74,6 +74,7 @@ function setPerms(p) {
     <main class="ps-2 pt-3 col me-3">
       <RouterView
           :user="user"
+          :perms="perms"
           @set-user="setUser"
           @set-perms="setPerms"
       />

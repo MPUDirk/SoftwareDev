@@ -1,6 +1,6 @@
 {
-  "name": "frontend",
-  "version": "1.0.1",
+  "name": "oms",
+  "version": "1.2.0",
   "description": "A software hw",
   "main": "./out/main/index.js",
   "author": "Dirk Chan",
@@ -21,6 +21,7 @@
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/utils": "^4.0.0",
     "axios": "^1.8.4",
+    "bootstrap": "^5.3.5",
     "electron-updater": "^6.3.9",
     "js-cookie": "^3.0.5",
     "vue-router": "^4.5.0"

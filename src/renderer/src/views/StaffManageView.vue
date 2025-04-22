@@ -1,5 +1,6 @@
 <script setup>
 import {getCurrentInstance, onMounted, ref} from "vue";
+import {Modal} from "bootstrap";
 import ErrsMsg from "../components/ErrsMsg.vue";
 
 
@@ -16,7 +17,6 @@ onMounted(() => {
 })
 
 function clickDel(staff) {
-  console.log(staff);
   instance.proxy.$axios.get("user/" + staff['username'] + "/del/").then(() => {
     staffs.value = staffs.value.filter(s => s['username'] !== staff['username'])
   })
@@ -37,6 +37,7 @@ function clickAdd() {
         "username": respond.data['username'],
       }
       staffs.value.push(staff);
+      new Modal(document.getElementById("newStaffModal")).hide()
     }).catch(e => {
       errs.value = {}
       try {

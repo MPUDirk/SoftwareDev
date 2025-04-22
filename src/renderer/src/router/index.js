@@ -4,6 +4,7 @@ import StaffManageView from '@/views/StaffManageView.vue'
 import GoodsManageView from '@/views/GoodsManageView.vue'
 import GoodsIndex from '@/components/goods/Index.vue'
 import Edit from "../components/goods/Edit.vue";
+import OrderView from "../views/OrderView.vue";
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -33,6 +34,11 @@ const router = createRouter({
           component: Edit
         }
       ]
+    },
+    {
+      path: '/order',
+      name: 'order',
+      component: OrderView,
     }
   ],
 })

@@ -12,7 +12,7 @@ This is a system for managing customer orders, suitable for small business or pe
 
 ### Install Package
 
-**-[Installation Package Hyperlink](https://github.com/MPUDirk/SoftwareDev/releases/download/Pre-release/frontend-1.0.0-setup.exe)**
+**-[OMS-1.2.0-setup.exe](https://github.com/MPUDirk/SoftwareDev/releases/download/Pre-release/frontend-1.1.0-setup.exe)**
 
 ## Folder Description
 
@@ -39,12 +39,12 @@ src
 
 ## Gantt Chart
 
-![image](https://github.com/MPUDirk/SoftwareDev/blob/master/Gantt%20Chart.jpg)
+![image](./doc/Gantt%20Chart.jpg)
 
 ## Contact The Author
 
-p2304362@mpu.edu.mo
+p2304362@mpu.edu.mo(Dirk)
 
-p2304321@mpu.edu.mo
+p2304321@mpu.edu.mo(Rue)
 
-p2304381@mpu.edu.mo
+p2304381@mpu.edu.mo(Anson)
