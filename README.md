@@ -2,6 +2,9 @@
 
 This is a system for managing customer orders, suitable for small business or personal projects
 
+## Introduction Video
+[video](https://github.com/MPUDirk/SoftwareDev/releases/download/v1.2.1/Introduce.mp4)
+
 ## Function
 
 - [x] LogIn
