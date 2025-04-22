@@ -1,8 +1,10 @@
 <script setup>
 import {getCurrentInstance, ref} from "vue";
+import {Modal} from "bootstrap";
 
 
 const instance = getCurrentInstance();
+let modal = null;
 const goods = ref([]);
 
 function clickAdd() {
@@ -18,16 +20,21 @@ function clickAdd() {
         'name': formData.get("name"),
       }
       goods.value.push(good);
-      new bootstrap.Modal(document.getElementById("newGoodsModal")).hide();
+      Modal.getInstance('#newGoodsModal').hide();
     }).catch(error => {
       console.log(error);
     });
   });
 }
+
+function clickAddGood() {
+  modal = new Modal('#newGoodsModal');
+  modal.show()
+}
 </script>
 
 <template>
-  <div class="modal fade" id="newGoodsModal" tabindex="-1" aria-labelledby="newGoodsModalLabel" aria-hidden="true">
+  <div class="modal fade" id="newGoodsModal" aria-labelledby="newGoodsModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -47,7 +54,7 @@ function clickAdd() {
           </div>
 
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-outline-dark" @click="modal.hide">Close</button>
             <button type="button" @click="clickAdd" class="btn btn-dark">Add</button>
           </div>
         </form>
@@ -57,7 +64,7 @@ function clickAdd() {
 
   <div class="border-bottom d-flex align-items-center justify-content-between">
     <h1>Goods Management</h1>
-    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#newGoodsModal">
+    <button type="button" class="btn btn-dark" @click="clickAddGood">
       + Goods
     </button>
   </div>

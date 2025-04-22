@@ -8,6 +8,7 @@ defineEmits(['set-user', 'set-perms'])
 const props = defineProps(['user'])
 const instance = getCurrentInstance()
 const errs = ref({})
+let modal = null;
 const staffs = ref([])
 
 onMounted(() => {
@@ -37,7 +38,7 @@ function clickAdd() {
         "username": respond.data['username'],
       }
       staffs.value.push(staff);
-      new Modal(document.getElementById("newStaffModal")).hide()
+      modal.hide();
     }).catch(e => {
       errs.value = {}
       try {
@@ -51,10 +52,15 @@ function clickAdd() {
     })
   })
 }
+
+function clickAddStaff() {
+  modal = new Modal("#newStaffModal");
+  modal.show();
+}
 </script>
 
 <template>
-  <div class="modal fade" id="newStaffModal" tabindex="-1" aria-labelledby="newStaffModalLabel" aria-hidden="true">
+  <div class="modal fade" id="newStaffModal" aria-labelledby="newStaffModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -77,7 +83,7 @@ function clickAdd() {
           </div>
 
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" @click="modal.hide">Close</button>
             <button type="button" @click="clickAdd" class="btn btn-primary">Add</button>
           </div>
         </form>
@@ -90,7 +96,7 @@ function clickAdd() {
   <div>
     <div class="my-3 border-bottom d-flex align-items-center justify-content-between">
       <h1>Staff Management</h1>
-      <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#newStaffModal">
+      <button type="button" class="btn btn-dark" @click="clickAddStaff">
         + Staff
       </button>
     </div>
