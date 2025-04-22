@@ -2,8 +2,8 @@
 
 This is a system for managing customer orders, suitable for small business or personal projects
 
-## Introduction Video
-[video](https://github.com/MPUDirk/SoftwareDev/releases/download/v1.2.1/Introduce.mp4)
+## Introduction [Video](https://github.com/MPUDirk/SoftwareDev/releases/download/v1.2.1/Introduce.mp4)
+Here is a video to introduce how to run our project source code in your computer and some function in our OMS
 
 ## Function
 
