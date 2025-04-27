@@ -15,7 +15,7 @@ Here is a [video](https://github.com/MPUDirk/SoftwareDev/releases/download/v1.2.
 
 ### Install Package
 
-**-[OMS-1.2.1-setup.exe](https://github.com/MPUDirk/SoftwareDev/releases/download/Pre-release/oms-1.2.1-setup.exe)**
+**-[OMS-1.2.1-setup.exe](https://github.com/MPUDirk/SoftwareDev/releases/download/v1.2.1/oms-1.2.1-setup.exe)**
 
 ## Folder Description
 
